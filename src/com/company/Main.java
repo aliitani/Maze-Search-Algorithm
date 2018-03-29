@@ -92,7 +92,7 @@ public class Main {
                 mediumMazeSolutionDFS.scoreDistance, mediumMazeSolutionDFS.nodesExpanded,
                 BigMazeSolutionDFS.scoreDistance, BigMazeSolutionDFS.nodesExpanded);
         System.out.printf("%-20s   |   %-10s  %-10s  |   %-10s  %-10s  |   %-10s  %-10s  \n",
-                "ASTAR - Euclidean", smallMazeSolutionAstar.scoreDistance, smallMazeSolutionAstar.nodesExpanded,
+                "ASTAR - Manhattan ", smallMazeSolutionAstar.scoreDistance, smallMazeSolutionAstar.nodesExpanded,
                 mediumMazeSolutionAStar.scoreDistance, mediumMazeSolutionAStar.nodesExpanded,
                 BigMazeSolutionAStar.scoreDistance, BigMazeSolutionAStar.nodesExpanded);
 

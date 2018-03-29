@@ -31,6 +31,7 @@ public class AStar {
 
         while(!queue.isEmpty()) {
             StateAstar currentState = queue.remove();
+
             if(!visited.contains(currentState.pacmanLocation)) {
                 nodesExpanded++;
             }

@@ -42,7 +42,7 @@ public class TheMaze {
                 } else if(checker == '#') {
                     type = PointsChecker.WALL;
                 } else if(checker == '.') {
-                    type = PointsChecker.DOT;
+                    type = PointsChecker.FOOD;
                 } else if( checker == 'P') {
                     type = PointsChecker.START;
                 }
@@ -73,7 +73,7 @@ public class TheMaze {
             point = solutionMap.get(point);
 
             if(!point.equals(startPoint)) {
-                point.pointType = PointsChecker.DOT;
+                point.pointType = PointsChecker.FOOD;
             }
         }
 
@@ -82,11 +82,13 @@ public class TheMaze {
 
     public int putSolutionDotOnMaze(HashMap<StateAstar, StateAstar> solutionMap, StateAstar state) {
         int solutionDistance = 0;
+
         while(solutionMap.containsKey(state)) {
             solutionDistance++;
             state = solutionMap.get(state);
+
             if(!state.pacmanLocation.equals(startPoint)) {
-                grid[state.pacmanLocation.y][state.pacmanLocation.x].pointType = PointsChecker.DOT;
+                grid[state.pacmanLocation.y][state.pacmanLocation.x].pointType = PointsChecker.FOOD;
             }
         }
         return solutionDistance;

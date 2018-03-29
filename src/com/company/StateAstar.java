@@ -35,9 +35,9 @@ public class StateAstar {
                 costSoFar == otherState.costSoFar &&
                 heuristic.equals(otherState.heuristic);
     }
-
+    //    so i can use it in hashsets and hashmaps as hashcode as mentioned in geeks for geeks dot com
     @Override
     public int hashCode(){
-        return (3 * pacmanLocation.x) + (7 * pacmanLocation.y) + (11 * costSoFar) + (13 * heuristic.distanceHeuristic);
+        return (3 * pacmanLocation.x) + (7 * pacmanLocation.y) + (11 * costSoFar) + (13 * heuristic.manhattanDistance);
     }
 }

@@ -27,11 +27,12 @@ public class DFS {
             nodesExpanded++;
 
             for(Points point: currentPoint.getAdjacentPoints(theMaze)) {
-                if((point.pointType == PointsChecker.EMPTY || point.pointType == PointsChecker.DOT) && !visited.contains(point)) {
+                if((point.pointType == PointsChecker.EMPTY || point.pointType == PointsChecker.FOOD) && !visited.contains(point)) {
                     stack.push(point);
                     visited.add(point);
                     predecessor.put(point, currentPoint);
                     if(point == theMaze.endPoint) {
+//                        reached the endpoint set the dots on maze and return
                         scoreDistance = theMaze.putSolutionDotOnMaze(predecessor, point);
                         return;
                     }

@@ -27,15 +27,19 @@ public class Points {
         ArrayList<Points> points = new ArrayList<Points>();
 
         /* Find up to 4 valid (not off the map) Points */
-        if(maze.validPosition(new Points(x+1, y)))	//right
-            points.add(maze.grid[y][x+1]);
-        if(maze.validPosition(new Points(x-1, y)))	//left
-            points.add(maze.grid[y][x-1]);
-        if(maze.validPosition(new Points(x, y+1)))	//up
-            points.add(maze.grid[y+1][x]);
-        if(maze.validPosition(new Points(x, y-1)))	//down
-            points.add(maze.grid[y-1][x]);
-
+        if(maze.validPosition(new Points(x+1, y))) {    //right
+            points.add(maze.grid[y][x + 1]);
+        }
+        if(maze.validPosition(new Points(x-1, y))) {
+            //left
+            points.add(maze.grid[y][x - 1]);
+        }
+        if(maze.validPosition(new Points(x, y+1))) {    //up
+            points.add(maze.grid[y + 1][x]);
+        }
+        if(maze.validPosition(new Points(x, y-1))) {    //down
+            points.add(maze.grid[y - 1][x]);
+        }
         return points;
     }
     @Override
@@ -50,19 +54,22 @@ public class Points {
 
     @Override
     public int hashCode(){
+
         return 3*x + 7*y;
     }
 
     @Override
     public String toString(){
-        if (pointType == PointsChecker.WALL)
+        if (pointType == PointsChecker.WALL) {
             return "#";
-        else if (pointType == PointsChecker.EMPTY)
+        } else if (pointType == PointsChecker.EMPTY) {
             return " ";
-        else if (pointType == PointsChecker.DOT)
+        } else if (pointType == PointsChecker.FOOD) {
             return ".";
-        else if (pointType == PointsChecker.START)
+        } else if (pointType == PointsChecker.START) {
             return "P";
+        }
+
         return "";
     }
 }

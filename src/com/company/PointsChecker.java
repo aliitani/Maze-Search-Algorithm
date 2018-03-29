@@ -1,5 +1,5 @@
 package com.company;
 
 public enum PointsChecker {
-    EMPTY, WALL, DOT, START
+    EMPTY, WALL, FOOD, START
 }
