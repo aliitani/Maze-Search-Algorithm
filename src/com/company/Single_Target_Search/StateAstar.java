@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Single_Target_Search;
 
 import java.util.ArrayList;
 

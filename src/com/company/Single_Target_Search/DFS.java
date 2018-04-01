@@ -1,47 +1,45 @@
-package com.company;
+package com.company.Single_Target_Search;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Stack;
 
-
-public class BFS {
-    public Queue<Points> queue;
+public class DFS {
+    public Stack<Points> stack;
     public HashSet<Points> visited;
     public HashMap<Points, Points> predecessor;
-    public int nodesExpanded;
-    public int scoreDistance;
+    public int nodesExpanded, scoreDistance;
 
-    public BFS() {
-        queue = new LinkedList<Points>();
+    public DFS() {
+        stack = new Stack<Points>();
         visited = new HashSet<Points>();
         predecessor = new HashMap<Points, Points>();
         nodesExpanded = 0;
         scoreDistance = 0;
     }
 
-    public void findSolution(TheMaze maze) {
-        queue.add(maze.startPoint);
-        visited.add(maze.startPoint);
+    public void findSolution(TheMaze theMaze) {
+        stack.add(theMaze.startPoint);
+        visited.add(theMaze.startPoint);
 
-        while(!queue.isEmpty()) {
+        while(!stack.isEmpty()) {
 
-            Points currentPoint = queue.remove();
+            Points currentPoint = stack.pop();
             nodesExpanded++;
 
-            for(Points point: currentPoint.getAdjacentPoints(maze)) {
+            for(Points point: currentPoint.getAdjacentPoints(theMaze)) {
 
                 if((point.pointType == PointsChecker.EMPTY || point.pointType == PointsChecker.FOOD) && !visited.contains(point)) {
 
-                    queue.add(point);
+                    stack.push(point);
                     visited.add(point);
                     predecessor.put(point, currentPoint);
 
-                    if(point == maze.endPoint) {
-
+                    if(point == theMaze.endPoint) {
 //                        reached the endpoint set the dots on maze and return
-                        scoreDistance = maze.putSolutionDotOnMaze(predecessor, point);
+
+                        scoreDistance = theMaze.putSolutionDotOnMaze(predecessor, point);
+
                         return;
                     }
                 }

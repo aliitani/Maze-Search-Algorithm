@@ -1,11 +1,13 @@
-package com.company;
+package com.company.Single_Target_Search;
 
 
-import java.awt.*;
+import com.company.Complete_Traversal.StatePacMan;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TheMaze {
@@ -15,8 +17,12 @@ public class TheMaze {
     public Points startPoint;
     public Points endPoint;
 
+    // for Complete Traversal
+    public ArrayList<Points> dots = new ArrayList<>();
+
     public TheMaze(String fileName) throws FileNotFoundException, IOException {
         // buffer read the file.
+
         BufferedReader readMaze = new BufferedReader(new FileReader("mazes/" + fileName));
 
         // if error throws an IOException.
@@ -48,14 +54,24 @@ public class TheMaze {
 
             for(int col = 0; col < columns; col++) {
                 char checker = line.charAt(col);
+
                 if(checker == ' ') {
+
                     type = PointsChecker.EMPTY;
+
                 } else if(checker == '#') {
+
                     type = PointsChecker.WALL;
+
                 } else if(checker == '.') {
                     type = PointsChecker.FOOD;
+                    // add the dots to the arraylist
+                    dots.add(new Points(col, row));
+
                 } else if( checker == 'P') {
+
                     type = PointsChecker.START;
+
                 }
 
                 grid[row][col] = new Points(col, row, type);
@@ -63,8 +79,11 @@ public class TheMaze {
                 if ( checker == '.') {
                     // keeps adding dots, until last one is added making it the endPoint.
                     endPoint = grid[row][col];
+
                 } else if(checker == 'P') {
+
                     startPoint = grid[row][col];
+
                 }
             }
 
@@ -94,7 +113,14 @@ public class TheMaze {
 
         return solutionDistance;
     }
-
+    public int calculateSolutionDistance(HashMap<StatePacMan, StatePacMan> solutionMap, StatePacMan state){
+        int solutionDistance = 0;
+        while(solutionMap.containsKey(state)) {
+            solutionDistance++;
+            state = solutionMap.get(state);
+        }
+        return solutionDistance;
+    }
     // puts the solution to console eventually. A-star
     public int putSolutionDotOnMaze(HashMap<StateAstar, StateAstar> solutionMap, StateAstar state) {
         int solutionDistance = 0;

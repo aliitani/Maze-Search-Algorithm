@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Single_Target_Search;
 
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -22,7 +22,7 @@ public class GenerateMazes {
 
         try {
 
-            fwSmall = new FileWriter("mazes/smallMaze");
+            fwSmall = new FileWriter("mazes/smallMaze_target");
             bwSmall = new BufferedWriter(fwSmall);
             bwSmall.write(
                     "####################\n" +
@@ -34,7 +34,7 @@ public class GenerateMazes {
                         "# # #   #         P#\n" +
                         "####################");
 
-            fwMedium = new FileWriter("mazes/mediumMaze");
+            fwMedium = new FileWriter("mazes/mediumMaze_target");
             bwMedium = new BufferedWriter(fwMedium);
             bwMedium.write(
                     "##################################\n" +
@@ -53,7 +53,7 @@ public class GenerateMazes {
                         "#.  ##     #   #       # #   # #P#\n" +
                         "##################################\n");
 
-            fwBig = new FileWriter("mazes/bigMaze");
+            fwBig = new FileWriter("mazes/bigMaze_target");
             bwBig = new BufferedWriter(fwBig);
             bwBig.write(
                     "###################################\n" +

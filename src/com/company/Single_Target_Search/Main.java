@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Single_Target_Search;
 
 import java.io.IOException;
 
@@ -10,9 +10,9 @@ public class Main {
         smallMaze.generateMazes();
         // difference as discussed in proposal is that the bfs is different from dfs in implemenetation is
 //      dfs takes a stack while bfs takes a queue
-        TheMaze smallMazeBFS = new TheMaze("smallMaze");
-        TheMaze smallMazeDFS = new TheMaze("smallMaze");
-        TheMaze smallMazeAstar = new TheMaze("smallMaze");
+        TheMaze smallMazeBFS = new TheMaze("smallMaze_target");
+        TheMaze smallMazeDFS = new TheMaze("smallMaze_target");
+        TheMaze smallMazeAstar = new TheMaze("smallMaze_target");
 
         BFS smallMazeSolutionBFS = new BFS();
         DFS smallMazeSolutionDFS = new DFS();
@@ -35,9 +35,9 @@ public class Main {
 
         System.out.printf("%s\n" , "RESULTS FOR MEDIUM MAZE: \n");
 
-        TheMaze mediumMazeBFS = new TheMaze("mediumMaze");
-        TheMaze mediumMazeDFS = new TheMaze("mediumMaze");
-        TheMaze mediumMazeAstar = new TheMaze("mediumMaze");
+        TheMaze mediumMazeBFS = new TheMaze("mediumMaze_target");
+        TheMaze mediumMazeDFS = new TheMaze("mediumMaze_target");
+        TheMaze mediumMazeAstar = new TheMaze("mediumMaze_target");
 
         BFS mediumMazeSolutionBFS = new BFS();
         DFS mediumMazeSolutionDFS = new DFS();
@@ -58,9 +58,9 @@ public class Main {
 
         System.out.printf("%s\n" , "RESULTS FOR LARGE MAZE: \n");
 
-        TheMaze BigMazeBFS = new TheMaze("bigMaze");
-        TheMaze BigMazeDFS = new TheMaze("bigMaze");
-        TheMaze BigMazeAstar = new TheMaze("bigMaze");
+        TheMaze BigMazeBFS = new TheMaze("bigMaze_target");
+        TheMaze BigMazeDFS = new TheMaze("bigMaze_target");
+        TheMaze BigMazeAstar = new TheMaze("bigMaze_target");
 
         BFS BigMazeSolutionBFS = new BFS();
         DFS BigMazeSolutionDFS = new DFS();

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Single_Target_Search;
 
 public class Heuristic {
     public int manhattanDistance;
