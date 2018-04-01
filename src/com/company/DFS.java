@@ -23,17 +23,23 @@ public class DFS {
         visited.add(theMaze.startPoint);
 
         while(!stack.isEmpty()) {
+
             Points currentPoint = stack.pop();
             nodesExpanded++;
 
             for(Points point: currentPoint.getAdjacentPoints(theMaze)) {
+
                 if((point.pointType == PointsChecker.EMPTY || point.pointType == PointsChecker.FOOD) && !visited.contains(point)) {
+
                     stack.push(point);
                     visited.add(point);
                     predecessor.put(point, currentPoint);
+
                     if(point == theMaze.endPoint) {
 //                        reached the endpoint set the dots on maze and return
+
                         scoreDistance = theMaze.putSolutionDotOnMaze(predecessor, point);
+
                         return;
                     }
                 }

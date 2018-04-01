@@ -16,9 +16,13 @@ public class TheMaze {
     public Points endPoint;
 
     public TheMaze(String fileName) throws FileNotFoundException, IOException {
+        // buffer read the file.
         BufferedReader readMaze = new BufferedReader(new FileReader("mazes/" + fileName));
 
+        // if error throws an IOException.
         String line = readMaze.readLine();
+
+        // get column & row lengths for grid.
         columns = line.length();
 
         while(line != null) {
@@ -26,7 +30,12 @@ public class TheMaze {
             line = readMaze.readLine();
         }
 
+        System.out.println("The Column Size is: " + columns);
+        System.out.println("The Row Size is: " + rows);
+
         readMaze.close();
+
+        // create the grid.
         grid = new Points[rows][columns];
 
         readMaze = new BufferedReader(new FileReader("mazes/" + fileName));
@@ -34,7 +43,9 @@ public class TheMaze {
         PointsChecker type = null;
         int row = 0;
         line = readMaze.readLine();
+
         while(line != null) {
+
             for(int col = 0; col < columns; col++) {
                 char checker = line.charAt(col);
                 if(checker == ' ') {
@@ -50,21 +61,25 @@ public class TheMaze {
                 grid[row][col] = new Points(col, row, type);
 
                 if ( checker == '.') {
+                    // keeps adding dots, until last one is added making it the endPoint.
                     endPoint = grid[row][col];
                 } else if(checker == 'P') {
                     startPoint = grid[row][col];
                 }
             }
+
             line = readMaze.readLine();
             row++;
         }
         readMaze.close();
     }
 
+    // method to check if the point is a valid position and not off the grid.
     public boolean validPosition(Points point) {
         return (point.x >= 0 && point.x < columns && point.y >= 0 && point.y < rows);
     }
 
+    // puts the solution to console eventually. BFS DFS
     public int putSolutionDotOnMaze(HashMap<Points, Points> solutionMap, Points point) {
         int solutionDistance = 0;
 
@@ -80,6 +95,7 @@ public class TheMaze {
         return solutionDistance;
     }
 
+    // puts the solution to console eventually. A-star
     public int putSolutionDotOnMaze(HashMap<StateAstar, StateAstar> solutionMap, StateAstar state) {
         int solutionDistance = 0;
 
@@ -94,6 +110,8 @@ public class TheMaze {
         return solutionDistance;
     }
 
+
+    // override the tostring method.
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();

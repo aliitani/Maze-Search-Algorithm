@@ -26,16 +26,20 @@ public class BFS {
         visited.add(maze.startPoint);
 
         while(!queue.isEmpty()) {
+
             Points currentPoint = queue.remove();
             nodesExpanded++;
 
             for(Points point: currentPoint.getAdjacentPoints(maze)) {
 
                 if((point.pointType == PointsChecker.EMPTY || point.pointType == PointsChecker.FOOD) && !visited.contains(point)) {
+
                     queue.add(point);
                     visited.add(point);
                     predecessor.put(point, currentPoint);
+
                     if(point == maze.endPoint) {
+
 //                        reached the endpoint set the dots on maze and return
                         scoreDistance = maze.putSolutionDotOnMaze(predecessor, point);
                         return;

@@ -79,6 +79,8 @@ public class Main {
 
         System.out.println("\n");
 
+        System.out.println("Results:");
+
         System.out.printf("%35s\n", "Maze Size");
         System.out.println("------------------------------------------------------------------------------------------");
         System.out.printf( "%-20s   |       %-20s|      %-20s |    %-30s\n", " ", "Small", "Medium", "Large");
