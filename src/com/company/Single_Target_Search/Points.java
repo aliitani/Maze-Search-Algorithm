@@ -3,6 +3,7 @@ package com.company.Single_Target_Search;
 import java.util.ArrayList;
 
 public class Points {
+//    Graph implementation based on points on the graph/Maze
     public int x, y;
     public PointsChecker pointType;
 
@@ -28,18 +29,20 @@ public class Points {
     public ArrayList<Points> getAdjacentPoints(TheMaze maze){
         ArrayList<Points> points = new ArrayList<Points>();
 
-        /* Find up to 4 valid (not off the map) Points */
-        if(maze.validPosition(new Points(x + 1, y))) {    //right
+        if(maze.validPosition(new Points(x + 1, y))) {
+            //right
             points.add(maze.grid[y][x + 1]);
         }
         if(maze.validPosition(new Points(x - 1, y))) {
             //left
             points.add(maze.grid[y][x - 1]);
         }
-        if(maze.validPosition(new Points(x, y + 1))) {    //up
+        if(maze.validPosition(new Points(x, y + 1))) {
+            //up
             points.add(maze.grid[y + 1][x]);
         }
-        if(maze.validPosition(new Points(x, y - 1))) {    //down
+        if(maze.validPosition(new Points(x, y - 1))) {
+            //down
             points.add(maze.grid[y - 1][x]);
         }
         return points;

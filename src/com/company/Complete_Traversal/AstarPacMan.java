@@ -36,8 +36,6 @@ public class AstarPacMan {
                 nodesExpanded++;
             }
 
-            System.out.println(nodesExpanded);
-
             visited.add(new StateInfo(currentState));
 
             for( StatePacMan state: currentState.getAdjacentNonWallStates(maze)) {

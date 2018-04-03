@@ -11,9 +11,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TheMaze {
+    // rows and columns of the grid.
     public int rows;
     public int columns;
+
+    //    graph based on Points
     public Points[][] grid;
+    // for pacman start point and end point he needs to get to
     public Points startPoint;
     public Points endPoint;
 
@@ -45,13 +49,13 @@ public class TheMaze {
         grid = new Points[rows][columns];
 
         readMaze = new BufferedReader(new FileReader("mazes/" + fileName));
-
         PointsChecker type = null;
         int row = 0;
         line = readMaze.readLine();
 
-        while(line != null) {
+        // creates the graph based on the maze
 
+        while(line != null) {
             for(int col = 0; col < columns; col++) {
                 char checker = line.charAt(col);
 
@@ -94,6 +98,7 @@ public class TheMaze {
     }
 
     // method to check if the point is a valid position and not off the grid.
+    // from the edge.
     public boolean validPosition(Points point) {
         return (point.x >= 0 && point.x < columns && point.y >= 0 && point.y < rows);
     }

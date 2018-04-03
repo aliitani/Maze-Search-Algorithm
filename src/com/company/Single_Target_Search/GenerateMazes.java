@@ -9,7 +9,13 @@ public class GenerateMazes {
     public GenerateMazes() {
 
     }
+    // auto generate mazes
+    public void generateRandomMazes() {
 
+    }
+
+
+    // manual generated Mazes
     public void generateMazes(){
         BufferedWriter bwSmall = null;
         FileWriter fwSmall = null;

@@ -191,8 +191,10 @@ public class Heuristic {
     }
 
     private int manhattanDistance(Points p1, Points p2){
+
         return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
     }
+
 //    might not be needed.
     private int manhattanDistance(SimplePoint p1, SimplePoint p2){
         return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);

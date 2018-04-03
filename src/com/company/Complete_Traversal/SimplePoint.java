@@ -14,7 +14,7 @@ public class SimplePoint {
 	public SimplePoint(int x, int y){
 		this.x = x;
 		this.y = y;
-		inPath = false;
+		this.inPath = false;
 	}
 	
 	public SimplePoint(int x, int y, boolean visited){
@@ -27,26 +27,22 @@ public class SimplePoint {
 	public SimplePoint(Points p){
 		x = p.x;
 		y = p.y;
-		inPath = false;
-	}
-	
-	/* Copy Constructor */
-	public SimplePoint(SimplePoint otherPoint){
-		x = otherPoint.x;
-		y = otherPoint.y;
-		inPath = otherPoint.inPath;
+		this.inPath = false;
 	}
 	
 	@Override
     public boolean equals(Object obj) {
-        if (obj == this) 
-            return true;
-        if (!(obj instanceof SimplePoint))
-            return false;
-        SimplePoint pos = (SimplePoint) obj;
-        return pos.x == x &&
-        	   pos.y == y && 
-        	   pos.inPath == inPath;
+        if (obj == this) {
+			return true;
+		}
+
+		if (!(obj instanceof SimplePoint)) {
+			return false;
+		}
+
+		SimplePoint pos = (SimplePoint) obj;
+
+        return pos.x == x && pos.y == y && pos.inPath == inPath;
     }
 	
 	@Override
