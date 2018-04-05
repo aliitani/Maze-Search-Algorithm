@@ -9,11 +9,12 @@ import java.util.PriorityQueue;
 
 public class AstarPacMan {
 
-    public PriorityQueue<StatePacMan> priorityQueue;
-    public HashSet<StateInfo> visited;
-    public HashMap<StatePacMan, StatePacMan> predecessor;
+    private PriorityQueue<StatePacMan> priorityQueue;
+    private HashSet<StateInfo> visited;
+    private HashMap<StatePacMan, StatePacMan> predecessor;
     public int solutionDistance;
     public int nodesExpanded;
+    private TheMaze maze = null;
 
     public AstarPacMan(TheMaze theMaze) {
         priorityQueue = new PriorityQueue<StatePacMan>(1000, new StateComparator_Complete());
@@ -21,9 +22,10 @@ public class AstarPacMan {
         predecessor = new HashMap<StatePacMan, StatePacMan>();
         nodesExpanded = 0;
         solutionDistance = 0;
+        maze = theMaze;
     }
 
-    public void findSolution(TheMaze maze) {
+    public void findSolution() {
         StatePacMan initial = new StatePacMan(new Points(maze.startPoint), 0, maze.dots);
         priorityQueue.add(initial);
         visited.add(new StateInfo(initial));
@@ -36,9 +38,11 @@ public class AstarPacMan {
                 nodesExpanded++;
             }
 
+            System.out.println(nodesExpanded);
+
             visited.add(new StateInfo(currentState));
 
-            for( StatePacMan state: currentState.getAdjacentNonWallStates(maze)) {
+            for (StatePacMan state: currentState.getAdjacentNonWallStates(maze)) {
                 if ( !visited.contains(new StateInfo(state))) {
                     priorityQueue.add(state);
                     predecessor.put(state, currentState);

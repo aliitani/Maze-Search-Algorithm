@@ -12,7 +12,7 @@ public class AStar {
     public HashMap<StateAstar, StateAstar> predecessor;
     public int nodesExpanded;
     public int scoreDistance;
-
+    private TheMaze maze = null;
 
     public AStar(TheMaze theMaze) {
         queue = new PriorityQueue<StateAstar>(500, new StateComparator());
@@ -20,10 +20,11 @@ public class AStar {
         predecessor = new HashMap<StateAstar, StateAstar>();
         nodesExpanded = 0;
         scoreDistance = 0;
+        maze = theMaze;
     }
 
-    public void findSolution(TheMaze theMaze) {
-        StateAstar stateAstar = new StateAstar(new Points(theMaze.startPoint), 0, theMaze);
+    public void findSolution() {
+        StateAstar stateAstar = new StateAstar(new Points(maze.startPoint), 0, maze);
         queue.add(stateAstar);
         visited.add(stateAstar.pacmanLocation);
 
@@ -39,16 +40,16 @@ public class AStar {
 
             visited.add(currentState.pacmanLocation);
 
-            for (StateAstar state: currentState.getAdjacentStates(theMaze)) {
+            for (StateAstar state: currentState.getAdjacentStates(maze)) {
 
                 if (!visited.contains(state.pacmanLocation)) {
 
                     queue.add(state);
                     predecessor.put(state, currentState);
 
-                    if (state.pacmanLocation.equals(theMaze.endPoint)) {
+                    if (state.pacmanLocation.equals(maze.endPoint)) {
 
-                        scoreDistance = theMaze.putSolutionDotOnMaze(predecessor, state);
+                        scoreDistance = maze.putSolutionDotOnMaze(predecessor, state);
                         return;
                     }
                 }
