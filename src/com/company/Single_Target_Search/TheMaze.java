@@ -45,7 +45,7 @@ public class TheMaze {
 
         readMaze.close();
 
-        // create the grid.
+        // create the grid. and node will be added.
         grid = new Points[rows][columns];
 
         readMaze = new BufferedReader(new FileReader("mazes/" + fileName));
@@ -120,10 +120,12 @@ public class TheMaze {
     }
     public int calculateSolutionDistance(HashMap<StatePacMan, StatePacMan> solutionMap, StatePacMan state){
         int solutionDistance = 0;
+
         while(solutionMap.containsKey(state)) {
             solutionDistance++;
             state = solutionMap.get(state);
         }
+
         return solutionDistance;
     }
     // puts the solution to console eventually. A-star

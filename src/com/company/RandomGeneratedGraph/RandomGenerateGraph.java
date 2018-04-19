@@ -75,6 +75,7 @@ public class RandomGenerateGraph {
         }
         // used in updateGrid()
         boolean isCellBelowNeighbor() {
+
             return this.neighbors.contains(new Cell(this.x, this.y + 1));
         }
         // used in updateGrid()
@@ -110,7 +111,10 @@ public class RandomGenerateGraph {
     }
     private void generateMaze(Cell startAt) {
         // don't generate from cell not there
-        if (startAt == null) return;
+        if (startAt == null) {
+            return;
+
+        }
         startAt.open = false; // indicate cell closed for generation
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(startAt);
@@ -120,9 +124,11 @@ public class RandomGenerateGraph {
             // this is to reduce but not completely eliminate the number
             //   of long twisting halls with short easy to detect branches
             //   which results in easy mazes
-            if (random.nextInt(10)==0)
+            if (random.nextInt(10)==0) {
                 cell = cells.remove(random.nextInt(cells.size()));
-            else cell = cells.remove(cells.size() - 1);
+            } else {
+                cell = cells.remove(cells.size() - 1);
+            }
             // for collection
             ArrayList<Cell> neighbors = new ArrayList<>();
             // cells that could potentially be neighbors
@@ -134,10 +140,14 @@ public class RandomGenerateGraph {
             };
             for (Cell other : potentialNeighbors) {
                 // skip if outside, is a wall or is not opened
-                if (other==null || other.wall || !other.open) continue;
+                if (other==null || other.wall || !other.open) {
+                    continue;
+                }
                 neighbors.add(other);
             }
-            if (neighbors.isEmpty()) continue;
+            if (neighbors.isEmpty()) {
+                continue;
+            }
             // get random cell
             Cell selected = neighbors.get(random.nextInt(neighbors.size()));
             // add as neighbor

@@ -9,7 +9,7 @@ public class Main {
 
         TheMaze mediumMaze = new TheMaze("mediumMaze_Complete");
         AstarPacMan mediumSolution = new AstarPacMan(mediumMaze);
-        mediumSolution.findSolution();
+        mediumSolution.findSolution(mediumMaze);
 
         System.out.println(mediumMaze);
         System.out.println("Nodes Expanded are: " + mediumSolution.nodesExpanded);
